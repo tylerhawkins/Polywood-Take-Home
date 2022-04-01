@@ -1,0 +1,603 @@
+@import "variables"; // variables.less
+@import "mixins"; // mixins.less
+@import "fonts"; // fonts.less
+
+// ========================================
+// GLOBAL
+// ========================================
+
+/* global box-sizing */
+*,
+*:after,
+*:before {
+    .box-sizing(border-box);
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: @font-family-name__base, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: @color-grey;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 18px;
+    line-height: 30px;
+    padding: 80px;
+    margin: 0;
+}
+
+p {
+    margin: 0 0 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.img-wrap > img {
+    display: inline-block;
+    vertical-align: top;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-wrap {
+    text-align: center;
+}
+
+/* buttons */
+.button {
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: @color-grey;
+    background: @color-white;
+    .lib-css(border, 1px solid @color-dark-grey, 1);
+    border-radius: 5px;
+    padding: 20px 60px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.02px;
+
+    &.sub {
+        border-radius: 0;
+        border: none;
+        color: @color-white;
+        letter-spacing: 0;
+
+        &.white {
+            color: @color-grey-2;
+            background: @color-light-grey-2;
+        }
+
+        &.slategrey {
+            background: @color-dark-grey-2;
+        }
+
+        &.black {
+            background: @color-black;
+        }
+    }
+}
+
+/* Owl Slider overrides */
+.owl-carousel {
+    .owl-nav {
+        button {
+            position: absolute;
+            top: 50%;
+            .translateY(-50%);
+
+            &:after {
+                content: "";
+                display: inline-block;
+                vertical-align: top;
+                background: url(../images/icons/right-arrow.svg) center center no-repeat;
+                background-size: cover;
+                width: 26px;
+                height: 46px;
+                filter: invert(83%) sepia(4%) saturate(10%) hue-rotate(38deg) brightness(103%) contrast(83%);
+            }
+        }
+
+        .owl-prev {
+            left: -46px;
+
+            &:after {
+                .rotate(180deg);
+            }
+        }
+
+        .owl-next {
+            right: -46px;
+        }
+    }
+}
+
+/* global section title */
+section {
+    margin-bottom: 70px;
+
+    > h2 {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 30px;
+        color: @color-dark-grey;
+        overflow: hidden;
+        text-align: center;
+        margin: 0 0 40px;
+
+        &:before, &:after {
+            background-color: @color-dark-grey;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        &:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        &:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+    }
+}
+
+/* global review callout */
+.review-callout {
+    background: @color-light-grey;
+    .display-flex();
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+
+    .review-text {
+        padding: 30px;
+        .display-flex();
+        .flex-direction(column);
+
+        blockquote {
+            font-style: italic;
+            margin: 0 0 10px;
+            letter-spacing: .92px;
+        }
+
+        .extra {
+            margin-top: auto;
+
+            p {
+                line-height: 30px;
+                font-weight: 500;
+                margin: 0 0 5px;
+            }
+
+            span {
+                display: block;
+                font-size: 13px;
+                line-height: 19px;
+            }
+        }
+    }
+
+    .review-img {
+        .flex(0 0 auto);
+
+        img {
+            display: block;
+        }
+    }
+
+    &.img-circle {
+        .review-img {
+            padding: 30px;
+            padding-right: 0;
+        }
+
+        .review-text ~ .review-img {
+            padding-left: 0;
+            padding-right: 30px;
+        }
+    }
+}
+
+.callout {
+    position: relative;
+    color: @color-white;
+    text-align: center;
+    overflow: hidden;
+
+    .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        background: url(../images/Fall-Patio-Dining-Category-Header_compressed.png) center center no-repeat;
+        background-size: cover;
+        .lib-css(filter, blur(4px), 1);
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        padding: 80px 40px;
+        font-weight: 500;
+
+        h3 {
+            text-transform: uppercase;
+            overflow: hidden;
+            font-size: 30px;
+            margin: 0 0 20px;
+
+            &:before, &:after {
+                background-color: @color-white;
+                content: "";
+                display: inline-block;
+                height: 1px;
+                position: relative;
+                vertical-align: middle;
+                width: 50%;
+            }
+
+            &:before {
+                right: 0.5em;
+                margin-left: -50%;
+            }
+
+            &:after {
+                left: 0.5em;
+                margin-right: -50%;
+            }
+        }
+
+        p {
+            max-width: 70%;
+            margin: 0 auto 40px;
+        }
+
+        .button {
+            .lib-css(border, 0, 1);
+        }
+    }
+}
+
+// ========================================
+// Why Section
+// ========================================
+
+section.why {
+    .why-intro {
+        .display-flex();
+        margin-bottom: 70px;
+
+        .img-wrap {
+            .flex(0 1 auto);
+            margin-right: 20px;
+        }
+
+        .text-wrap {
+            .flex(50%);
+            line-height: 39px;
+            letter-spacing: .59px;
+        }
+    }
+}
+
+// ========================================
+// Features Section
+// ========================================
+
+section.features {
+    text-align: center;
+
+    ul {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-row: auto;
+        grid-column-gap: 80px;
+        grid-row-gap: 80px;
+
+        li {
+            h3 {
+                font-size: 30px;
+                font-weight: normal;
+                margin: 20px 0 10px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 30px;
+            }
+        }
+    }
+}
+
+// ========================================
+// FAQ Section
+// ========================================
+
+section.faqs {
+    ul {
+        max-width: 70%;
+        margin: 0 auto;
+
+        li {
+            margin-bottom: 40px;
+            .lib-css(border, 1px solid @color-grey-2, 1);
+            .lib-css(border-radius, 5px, 1);
+            cursor: pointer;
+
+            h3 {
+                font-size: 18px;
+                line-height: 25px;
+                padding: 20px 50px 20px 20px;
+                margin: 0;
+                font-weight: normal;
+                font-style: italic;
+                text-decoration: underline;
+                color: @color-grey-2;
+                .lib-css(border-top-left-radius, 5px, 1);
+                .lib-css(border-top-right-radius, 5px, 1);
+                transition: all 0.3s ease-in-out;
+                position: relative;
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                &:after {
+                    content: '\002b';
+                    display: inline-block;
+                    font-size: 20px;
+                    line-height: 26px;
+                    width: 30px;
+                    height: 30px;
+                    font-family: Helvetica,Arial,sans-serif;
+                    background: @color-light-grey;
+                    color: @color-grey-2;;
+                    text-align: center;
+                    font-style: normal;
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    .transform(translateY(-50%) rotate(0deg));
+                    .lib-css(border-radius, 50%, 1);
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+
+            .content {
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease-in-out;
+                font-size: 16px;
+                line-height: 30px;
+
+                .inner {
+                    padding: 20px;
+                    .lib-css(border-top, 1px solid @color-grey-2, 1);
+                }
+            }
+
+            &.active {
+                h3 {
+                    background: @color-light-grey;
+                    text-decoration: none;
+
+                    &:after {
+                        background: @color-white;
+                        .transform(translateY(-50%) rotate(45deg));
+                    }
+                }
+
+                .content {
+                    max-height: 300px;
+                }
+            }
+        }
+    }
+}
+
+// ========================================
+// Colors Section
+// ========================================
+
+section.colors {
+    text-align: center;
+
+    > p {
+        padding: 0 4%;
+        font-size: 19px;
+        line-height: 30px;
+    }
+
+    .main {
+        .display-flex-between();
+
+        li {
+            padding: 0 10px;
+
+            .button {
+                width: 100%;
+            }
+        }
+    }
+
+    .thumbs {
+        .display-flex();
+        .flex-justify-items(center);
+        margin: 40px 0;
+
+        li {
+            margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            img {
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+    }
+}
+
+// ========================================
+// Where To Enjoy Section
+// ========================================
+
+section.where {
+    ul {
+        .display-flex-between();
+
+        li {
+            margin-right: 40px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            h3 {
+                font-size: 24px;
+                line-height: 39px;
+                font-weight: normal;
+                margin: 10px 0;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
+
+// ========================================
+// Types Section
+// ========================================
+
+section.types {
+    ul {
+        margin: 0 6% 40px;
+
+        li {
+            .display-flex();
+            margin-bottom: 40px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .img-wrap {
+                .flex(0 0 auto);
+                margin-right: 80px;
+            }
+
+            h3 {
+                font-weight: normal;
+                font-size: 30px;
+                line-height: 39px;
+                margin: 0 0 10px;
+            }
+        }
+    }
+
+    .link-wrap {
+        .button {
+            width: 100%;
+            max-width: 400px;
+        }
+    }
+}
+
+// ========================================
+// Reviews Section
+// ========================================
+
+section.reviews {
+    text-align: center;
+
+    ul {
+        .grid-col(3, 40px);
+
+        li {
+            text-align: left;
+            .display-flex();
+
+            .review-img {
+                .flex(0 0 auto);
+                margin-right: 20px;
+            }
+
+            .review-content {
+                .display-flex();
+                .flex-direction(column);
+
+                h3 {
+                    margin: 0;
+                    font-size: 18px;
+                    line-height: 30px;
+                    font-weight: 500;
+                }
+
+                p {
+                    margin: 0 0 5px;
+                    font-size: 12px;
+                    line-height: 19px;
+                }
+
+                > span {
+                    font-size: 13px;
+                    line-height: 19px;
+                    font-style: italic;
+                    margin-top: auto;
+                }
+            }
+        }
+    }
+
+    .stars {
+        position: relative;
+        display: inline-block;
+        .flex-align-self(flex-start);
+
+        .stars-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+            color: @color-yellow;
+        }
+
+        .stars-empty {
+            color: @color-light-grey;
+        }
+    }
+}

@@ -1,0 +1,131 @@
+.box-sizing (@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing:    @type;
+    box-sizing:         @type;
+}
+
+.display-flex() {
+    display: flex;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+.flex(@value) {
+    -webkit-box-flex: 			@value;
+    -moz-box-flex: 				@value;
+    -webkit-flex: 				@value;
+    -ms-flex: 					@value;
+    flex: 						@value;
+}
+
+.flex-direction(@direction) {
+    -webkit-flex-direction: @direction;
+    -ms-flex-direction: @direction;
+    flex-direction: @direction;
+}
+
+.flex-align-items(@value) {
+    -webkit-align-items: @value;
+    -ms-flex-align: @value;
+    -webkit-box-align: @value;
+    align-items: @value;
+}
+
+.flex-justify-items(@value) {
+    -ms-justify-content: @value;
+    -webkit-justify-content: @value;
+    justify-content: @value;
+}
+
+.flex-align-self(@value) {
+    -ms-flex-item-align:@value;
+    -webkit-align-self: @value;
+    align-self:@value;
+}
+
+.display-flex-between() {
+    display: flex;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -ms-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.lib-css(
+    @_property,
+    @_value,
+    @_prefix: 0
+) when (@_prefix = 1)
+  and not (@_value = '')
+  and not (@_value = false)
+  and not (extract(@_value, 1) = false)
+  and not (extract(@_value, 2) = false)
+  and not (extract(@_value, 3) = false)
+  and not (extract(@_value, 4) = false)
+  and not (extract(@_value, 5) = false) {
+    -webkit-@{_property}: @_value;
+    -moz-@{_property}: @_value;
+    -ms-@{_property}: @_value;
+}
+
+.lib-css(
+    @_property,
+    @_value,
+    @_prefix: 0
+) when not (@_value = '')
+  and not (@_value = false)
+  and not (extract(@_value, 1) = false)
+  and not (extract(@_value, 2) = false)
+  and not (extract(@_value, 3) = false)
+  and not (extract(@_value, 4) = false)
+  and not (extract(@_value, 5) = false) {
+        @{_property}: @_value;
+}
+
+.transform(@string){
+    -webkit-transform: @string;
+    -moz-transform: 	 @string;
+    -ms-transform: 		 @string;
+    -o-transform: 		 @string;
+}
+
+.translateX(@x) {
+    -moz-transform: translateX(@x);
+    -webkit-transform: translateX(@x);
+    -o-transform: translateX(@x);
+    -ms-transform: translateX(@x);
+    transform: translateX(@x);
+}
+
+.translateY(@y) {
+    -moz-transform: translateY(@y);
+    -webkit-transform: translateY(@y);
+    -o-transform: translateY(@y);
+    -ms-transform: translateY(@y);
+    transform: translateY(@y);
+}
+
+.rotate (@deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: 	 rotate(@deg);
+    -ms-transform: 		 rotate(@deg);
+    -o-transform: 		 rotate(@deg);
+}
+
+.grid-col(@col, @gap: 0) {
+    display: grid;
+    grid-template-columns: repeat(@col, 1fr);
+    grid-column-gap: @gap;
+}

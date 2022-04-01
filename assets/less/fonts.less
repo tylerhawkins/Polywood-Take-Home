@@ -1,0 +1,76 @@
+//
+//  Fonts
+//  _____________________________________________
+
+@font-family-name__base: 'Gotham Rounded';
+
+.lib-font-face(
+    @family-name,
+    @font-path,
+    @font-weight: normal,
+    @font-style: normal
+) {
+    @font-face {
+        font-family: @family-name;
+        src: url('@{font-path}.woff2') format('woff2'),
+        url('@{font-path}.woff') format('woff');
+        font-weight: @font-weight;
+        font-style: @font-style;
+    }
+}
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-Light',
+    @font-weight: 300,
+    @font-style: normal
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-LightItalic',
+    @font-weight: 300,
+    @font-style: italic
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-Book',
+    @font-weight: 400,
+    @font-style: normal
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-BookItalic',
+    @font-weight: 400,
+    @font-style: italic
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-Medium',
+    @font-weight: 500,
+    @font-style: normal
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-MediumItalic',
+    @font-weight: 500,
+    @font-style: italic
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-Bold',
+    @font-weight: 700,
+    @font-style: normal
+);
+
+.lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '../fonts/gotham-rounded/GothamRounded-BoldItalic',
+    @font-weight: 700,
+    @font-style: italic
+);
