@@ -18,14 +18,17 @@
             }
         });
 
-        $(document).ready(function(){
-            $('.review-carousel').owlCarousel({
+        // ========================================
+        // Carousels
+        // ========================================
+        $(document).ready(function() {
+            $('#review-carousel').owlCarousel({
                 loop: true,
                 dots: false,
                 nav: true,
-                navText: ['',''],
+                navText: ['', ''],
                 responsiveClass: true,
-                responsive:{
+                responsive: {
                     0: {
                         items: 1
                     },
@@ -41,17 +44,20 @@
             });
 
             let syncDots = function(el) {
-                console.log(el);
                 let current = el.item.index;
+                let count = el.item.count;
+                let pageSize = el.page.size;
                 let currentDot = $('.colors-dots li').eq(current);
 
-                if( !currentDot.hasClass('active') ) {
-                    $('.colors-dots li.active').removeClass('active');
-                    currentDot.addClass('active');
+                if( current <= (count - pageSize) ) {
+                    if( !currentDot.hasClass('active') ) {
+                        $('.colors-dots li.active').removeClass('active');
+                        currentDot.addClass('active');
+                    }
                 }
             }
 
-            let colorsCarousel = $('.colors-carousel').owlCarousel({
+            let colorsCarousel = $('#colors-carousel').owlCarousel({
                 dots: false,
                 nav: true,
                 navText: ['',''],
