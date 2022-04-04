@@ -22,6 +22,7 @@
         // Carousels
         // ========================================
         $(document).ready(function() {
+            /* instantiate responsive review carousel*/
             $('#review-carousel').owlCarousel({
                 loop: true,
                 dots: false,
@@ -43,6 +44,8 @@
                 }
             });
 
+            /* callback function that syncs the active dot nav when the colors carousel changes */
+            /* using strict, so need this above the carousel instantiation since it's not hoisted */
             let syncDots = function(el) {
                 let current = el.item.index;
                 let count = el.item.count;
@@ -57,6 +60,7 @@
                 }
             }
 
+            /* instantiate colors carousel with sync function callback */
             let colorsCarousel = $('#colors-carousel').owlCarousel({
                 dots: false,
                 nav: true,
@@ -77,6 +81,7 @@
                 }
             }).on("changed.owl.carousel", syncDots);
 
+            /* update colors carousel slide when user clicks on one of the nav dots */
             $('.colors-dots li img').click(function() {
                 if( !$(this).parent().hasClass('active') ) {
                     $('.colors-dots li.active').removeClass('active');
